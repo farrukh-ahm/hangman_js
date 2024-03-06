@@ -1,0 +1,124 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    block-size: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn{
+    inline-size: 10em;
+    block-size: 5em;
+    text-align: center;
+    background-color: transparent;
+    border: 1px solid black;
+    outline: none;
+    cursor: pointer;
+}
+
+.image-container{
+
+    block-size: 10rem;
+    inline-size: 8rem;
+    display: grid;
+    place-items: center;
+    background-color: aqua;
+}
+
+img{
+    block-size: 100%;
+    inline-size: 100%;
+}
+
+.game-container{
+    inline-size: 100%;
+    block-size: 20rem;
+    border: 1px solid black;
+    display: flex;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    /* position: relative; */
+
+    .containers{
+        flex: none;
+        inline-size: 100%;
+        block-size: 100%;
+    }
+
+    .start-screen{
+        /* position: absolute; */
+        /* inset: 0; */
+        background-color: aquamarine;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5em;
+    }
+
+    .selection-screen{
+        position: relative;
+        background-color: hotpink;
+
+        .selection{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+    }
+
+    .question-screen{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        gap: 5px;
+        background-color: brown;
+
+        h2{
+            font-size: 2.5rem;
+        }
+
+        .selection-buttons{
+            inline-size: 70%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 5px;
+            flex-wrap: wrap;
+
+            .selection-btn{
+                inline-size: 2.5rem;
+                aspect-ratio: 1;
+                text-align: center;
+                border: 1px solid black;
+                outline: none;
+                background-color: transparent;
+            }
+        }
+    }
+}
+
+@media (min-width: 500px){
+    .image-container{
+        block-size: 20rem;
+        inline-size: 15rem;
+    }
+
+    .game-container{
+        inline-size: 35rem;
+        block-size: 30rem;
+    }
+}
+
