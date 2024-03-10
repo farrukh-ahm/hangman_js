@@ -6,17 +6,20 @@ const gameContainer = document.querySelector(".game-container")
 const wordGuess = document.querySelector(".guess-word")
 const guessButtons = document.querySelectorAll(".selection-btn")
 const hangmanFigure = document.querySelector(".hangman-figure")
+const modal = document.querySelector(".dialog-box")
 
 const alphas = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 let selectedWords = []
 let randomWordList
+let cat
 let turns = 0
+let score = 0
 
 
 // ----------- INITIALISE THE GAME SCREEN --------------------------
 const gameSetup = category => {
 
-    let cat = category. toLowerCase()
+    cat = category. toLowerCase()
 
     let randomWord = words[cat][Math.floor(Math.random() * words[cat].length)].toLowerCase()
     console.log(randomWord)
@@ -29,13 +32,48 @@ const gameSetup = category => {
             
             selectedWords.push("-")
         }
-        selectedWords.push("_")
+        else{
+            selectedWords.push("_")
+        }
     }
 
     wordGuess.innerText = `${selectedWords.join(" ")}`
     hangmanFigure.src = `./assets/${hangmanStage[turns]}`
     gameContainer.scrollBy(gameContainer.offsetWidth, 0)
     // console.log(randomWord)
+
+}
+
+
+// ----------- INITIATE NEXT QUESTION --------------------------
+
+const nextQuestion = () => {
+
+    guessButtons.forEach(guess => {
+        guess.disabled = false;
+        guess.style.backgroundColor = "#DBF9F1"
+    })
+
+    let randomWord = words[cat][Math.floor(Math.random() * words[cat].length)].toLowerCase()
+    console.log(randomWord)
+
+    randomWordList = randomWord.split("")
+    console.log(randomWordList)
+
+    selectedWords = []
+
+    for(let i of randomWord){
+        if(!alphas.includes(i)){
+            
+            selectedWords.push("-")
+        }
+        else{
+            selectedWords.push("_")
+        }
+    }
+
+    wordGuess.innerText = `${selectedWords.join(" ")}`
+    // hangmanFigure.src = `./assets/${hangmanStage[turns]}`
 
 }
 
@@ -54,11 +92,22 @@ const playerGuess = e => {
                 wordGuess.innerText = `${selectedWords.join(" ").toUpperCase()}`
             }
         }
+
+        if(!selectedWords.includes("_")){
+            score ++
+            document.querySelector(".score-display").innerText = `Your Score: ${score}`
+            modal.showModal();
+        }
     }
     else{
         e.target.style.backgroundColor = "#FF492B";
         turns++
         hangmanFigure.src = `./assets/${hangmanStage[turns]}`
+
+        if(turns === 6){
+            gameContainer.scrollBy(gameContainer.offsetWidth, 0)
+            return
+        }
     }
 
 }
@@ -97,3 +146,21 @@ guessButtons.forEach(guess => {
     })
 
 })
+
+
+// ----------- DIALOG BOX --------------------------
+const modalClose = document.querySelector(".modal-close")
+modalClose.addEventListener("click", ()=>{
+
+    modal.close()
+    nextQuestion()
+
+})
+
+// ----------- KEYBOARD INPUT --------------------------
+
+// document.querySelector(".question-screen").addEventListener("keyup", (e)=>{
+
+//     playerGuess()
+
+// })
