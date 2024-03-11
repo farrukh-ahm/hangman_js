@@ -7,6 +7,7 @@ const wordGuess = document.querySelector(".guess-word")
 const guessButtons = document.querySelectorAll(".selection-btn")
 const hangmanFigure = document.querySelector(".hangman-figure")
 const modal = document.querySelector(".dialog-box")
+const replay = document.querySelector(".replay")
 
 const alphas = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 let selectedWords = []
@@ -39,7 +40,8 @@ const gameSetup = category => {
 
     wordGuess.innerText = `${selectedWords.join(" ")}`
     hangmanFigure.src = `./assets/${hangmanStage[turns]}`
-    gameContainer.scrollBy(gameContainer.offsetWidth, 0)
+    // gameContainer.scrollBy(gameContainer.offsetWidth, 0)
+    gameContainer.scrollBy(document.querySelector(".selection-screen").offsetWidth, 0)
     // console.log(randomWord)
 
 }
@@ -51,7 +53,7 @@ const nextQuestion = () => {
 
     guessButtons.forEach(guess => {
         guess.disabled = false;
-        guess.style.backgroundColor = "#DBF9F1"
+        guess.style.backgroundColor = "transparent"
     })
 
     let randomWord = words[cat][Math.floor(Math.random() * words[cat].length)].toLowerCase()
@@ -105,7 +107,7 @@ const playerGuess = e => {
         hangmanFigure.src = `./assets/${hangmanStage[turns]}`
 
         if(turns === 6){
-            gameContainer.scrollBy(gameContainer.offsetWidth, 0)
+            gameContainer.scrollBy(document.querySelector(".question-screen").offsetWidth, 0)
             return
         }
     }
@@ -118,7 +120,8 @@ const playerGuess = e => {
 // ----------- START SCREEN BUTTON --------------------------
 startButton.addEventListener("click", ()=>{
     console.log(gameContainer.offsetWidth)
-    gameContainer.scrollBy(gameContainer.offsetWidth,0)
+    // gameContainer.scrollBy(gameContainer.offsetWidth,0)
+    gameContainer.scrollBy(document.querySelector(".start-screen").offsetWidth,0)
 })
 
 
@@ -155,6 +158,12 @@ modalClose.addEventListener("click", ()=>{
     modal.close()
     nextQuestion()
 
+})
+
+
+// ----------- REPLAY --------------------------
+replay.addEventListener("click", ()=>{
+    location.reload(true)
 })
 
 // ----------- KEYBOARD INPUT --------------------------

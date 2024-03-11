@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Madimi+One&display=swap');
+
 *{
     margin: 0;
     padding: 0;
@@ -7,9 +9,10 @@
 :root{
 
     --border-color: #fff;
-    --bg-color-1: rgba(133, 232, 178, 0.5);
-    --bg-color-2: rgba(164, 240, 156, 0.5);
-    --bg-color-3: rgba(204, 246, 133, 0.5);
+    --bg-color-1: rgba(158, 136, 255, 0.5);
+    --bg-color-2: rgba(86, 73, 183, 0.5);
+    --bg-color-3: rgba(0, 17, 115, 0.4);
+    --bg-color-4: rgba(158, 136, 255, 0.5);
     --buttons-color: rgba(224, 173, 188, 1);
     --buttons-color-hover: rgba(224, 173, 188, 0.8);
     --btn-border: #E0938B;
@@ -29,36 +32,65 @@ body{
     justify-content: center;
     align-items: center;
     gap: 8px;
-    /* background: rgb(0, 0, 0, 0.7); */
-    background-image: url("https://images.unsplash.com/photo-1579546928686-286c9fbde1ec?q=80&w=2139&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-    background-position: center;
+    background: #d5cabd;
+    background-image: url("");
+    background-position: left;
     background-size: cover;
     background-repeat: no-repeat;
     color: var(--text-color);
+    /* animation: ba-anime 5s linear infinite alternate; */
     /* background-blend-mode: overlay; */
 }
+@keyframes ba-anime{
+    0%{
+        background-position: left;
+    }
+
+    100%{
+        background-position: right;
+    }
+}
+/* ------------ GENERIC BUTTON STYLE -------------------- */
 
 .btn{
     inline-size: 10em;
     block-size: 5em;
     text-align: center;
-    background-color: var(--buttons-color);
+    background-color: transparent;
     /* border: 1px solid var(--btn-border); */
     border: none;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     outline: none;
     cursor: pointer;
     font-size: 12px;
     color: var(--btn-text-color);
     transition: all 0.3s ease-in;
     letter-spacing: 2px;
-    box-shadow: 0 1px 2px rgb(54, 69, 79);
+    /* box-shadow: 0 1px 2px rgb(54, 69, 79); */
+    padding: 0;
+    font-family: "Madimi One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
-.btn:hover{
+/* .btn:hover{
     background-color: var(--buttons-color-hover);
     color: var(--btn-text-hover);
+} */
+.start-button, .replay{
+    background: url("./assets/button3.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
+
+.cat, .modal-close{
+    background: url("./assets/button3.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+/* ------------ HANGMAN IMAGES -------------------- */
 
 .image-container{
 
@@ -74,12 +106,14 @@ img{
     inline-size: 100%;
 }
 
+/* ------------ GAME PANEL -------------------- */
+
 .game-container{
     inline-size: 100%;
-    block-size: 20rem;
+    min-block-size: 20rem;
     border: 1px solid var(--border-color);
     border-radius: 8px;
-    box-shadow: 0 1px 5px var(--border-color);
+    box-shadow: 0 1px 2px transparent, 0 3px 5px #36454F, 0 5px 6px #36454F;
     display: flex;
     overflow-x: hidden;
     scroll-behavior: smooth;
@@ -147,11 +181,31 @@ img{
                 text-align: center;
                 border: 1px solid var(--alpha-border);
                 outline: none;
-                background-color: var(--alpha-bg);
-                color: var(--alpha-color);
+                background-color: transparent;
+                border: 1px solid var(--border-color);
+                color: var(--alpha-bg);
                 cursor: pointer;
+                font-family: "Madimi One", sans-serif;
+                font-weight: 400;
+                font-style: normal;
             }
         }
+    }
+
+    .end-screen{
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5em;
+        background-color: var(--bg-color-4);
+
+        .lost-image{
+            inline-size: 8.5em;
+            block-size: 13em;
+        }
+
     }
 }
 
@@ -200,7 +254,7 @@ img{
     }
 
     &::backdrop{
-        background: linear-gradient(to right, red, blue, yellow, orange);
+        background: rgba(0,0,0,0.5);
     }
 
     .modal-image{
@@ -208,4 +262,8 @@ img{
         block-size: 15rem;
     }
 
+}
+
+.hangman-figure{
+    filter: drop-shadow(0 2px 4px #36454F );
 }
