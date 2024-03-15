@@ -9,7 +9,7 @@
 :root{
 
     --border-color: #fff;
-    --bg-color-1: rgba(158, 136, 255, 0.5);
+    --bg-color-1: rgba(210, 224, 251, 0.1);
     --bg-color-2: rgba(86, 73, 183, 0.5);
     --bg-color-3: rgba(0, 17, 115, 0.4);
     --bg-color-4: rgba(158, 136, 255, 0.5);
@@ -19,9 +19,9 @@
     --btn-text-color: #fff;
     --btn-text-hover: rgb(54, 69, 79);
     --alpha-color: #023020;
-    --alpha-bg: #DBF9F1;
-    --alpha-border: #023020;
-    --text-color: #fff;
+    --alpha-bg: #7469B6;
+    --alpha-border: #8EACCD;
+    --text-color: #7469B6;
 
 }
 
@@ -32,8 +32,7 @@ body{
     justify-content: center;
     align-items: center;
     gap: 8px;
-    background: #d5cabd;
-    background-image: url("");
+    background-image: linear-gradient(to right top, #d2e0fb, #c1e5f7, #bce8e9, #c5e8d8, #d7e5ca);
     background-position: left;
     background-size: cover;
     background-repeat: no-repeat;
@@ -139,7 +138,7 @@ img{
 
     .selection-screen{
         position: relative;
-        background-color: var(--bg-color-2);
+        background-color: var(--bg-color-1);
         backdrop-filter: blur(5px);
 
         .selection{
@@ -150,7 +149,7 @@ img{
             display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 2px;
         }
     }
 
@@ -160,7 +159,7 @@ img{
         justify-content: space-around;
         align-items: center;
         gap: 5px;
-        background-color: var(--bg-color-3);
+        background-color: var(--bg-color-1);
         backdrop-filter: blur(5px);
 
         h2{
@@ -179,10 +178,9 @@ img{
                 inline-size: 2.5rem;
                 aspect-ratio: 1;
                 text-align: center;
-                border: 1px solid var(--alpha-border);
                 outline: none;
                 background-color: transparent;
-                border: 1px solid var(--border-color);
+                border: 1px solid var(--alpha-border);
                 color: var(--alpha-bg);
                 cursor: pointer;
                 font-family: "Madimi One", sans-serif;
@@ -198,12 +196,13 @@ img{
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 1.5em;
-        background-color: var(--bg-color-4);
+        gap: 1em;
+        background-color: var(--bg-color-1);
 
         .lost-image{
-            inline-size: 8.5em;
-            block-size: 13em;
+            inline-size: 7em;
+            /* aspect-ratio: 11em; */
+            block-size: 11em;
         }
 
     }
@@ -218,7 +217,27 @@ img{
     .game-container{
         inline-size: 35rem;
         block-size: 30rem;
+
+        .selection-screen{
+    
+            .selection{
+                gap: 8px;
+            }
+        }
+
+        .end-screen{
+
+            gap: 1.5em;
+    
+            .lost-image{
+                inline-size: 9em;
+                block-size: 13em;
+            }
+    
+        }
     }
+
+    
 }
 
 
@@ -250,7 +269,7 @@ img{
         align-items: center;
         justify-content: center;
         gap: 2.5rem;
-        color: #fff
+        color: #fff;
     }
 
     &::backdrop{
@@ -267,3 +286,11 @@ img{
 .hangman-figure{
     filter: drop-shadow(0 2px 4px #36454F );
 }
+
+/* -------------------- SCORE BOX ----------------------------- */
+
+/* .score{
+    position: sticky;
+    top: 20%;
+    right: 10%;
+} */

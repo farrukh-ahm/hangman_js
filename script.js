@@ -97,7 +97,8 @@ const playerGuess = e => {
 
         if(!selectedWords.includes("_")){
             score ++
-            document.querySelector(".score-display").innerText = `Your Score: ${score}`
+            document.querySelector(".score-display").innerText = `Your Score: ${score}`;
+            document.querySelector(".score-collector").innerText = parseInt(document.querySelector(".score-collector").innerText)+1
             modal.showModal();
         }
     }
@@ -107,6 +108,7 @@ const playerGuess = e => {
         hangmanFigure.src = `./assets/${hangmanStage[turns]}`
 
         if(turns === 6){
+            document.querySelector(".total-score").innerText = `Your Score: ${score}`
             gameContainer.scrollBy(document.querySelector(".question-screen").offsetWidth, 0)
             return
         }
