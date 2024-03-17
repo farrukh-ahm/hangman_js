@@ -23,10 +23,8 @@ const gameSetup = category => {
     cat = category. toLowerCase()
 
     let randomWord = words[cat][Math.floor(Math.random() * words[cat].length)].toLowerCase()
-    console.log(randomWord)
 
     randomWordList = randomWord.split("")
-    console.log(randomWordList)
 
     for(let i of randomWord){
         if(!alphas.includes(i)){
@@ -40,9 +38,7 @@ const gameSetup = category => {
 
     wordGuess.innerText = `${selectedWords.join(" ")}`
     hangmanFigure.src = `./assets/${hangmanStage[turns]}`
-    // gameContainer.scrollBy(gameContainer.offsetWidth, 0)
     gameContainer.scrollBy(document.querySelector(".selection-screen").offsetWidth, 0)
-    // console.log(randomWord)
 
 }
 
@@ -60,7 +56,6 @@ const nextQuestion = () => {
     console.log(randomWord)
 
     randomWordList = randomWord.split("")
-    console.log(randomWordList)
 
     selectedWords = []
 
@@ -75,7 +70,6 @@ const nextQuestion = () => {
     }
 
     wordGuess.innerText = `${selectedWords.join(" ")}`
-    // hangmanFigure.src = `./assets/${hangmanStage[turns]}`
 
 }
 
@@ -110,6 +104,7 @@ const playerGuess = e => {
         if(turns === 6){
             document.querySelector(".total-score").innerText = `Your Score: ${score}`
             gameContainer.scrollBy(document.querySelector(".question-screen").offsetWidth, 0)
+            hangmanFigure.src = `./assets/over.png`
             return
         }
     }
@@ -122,7 +117,6 @@ const playerGuess = e => {
 // ----------- START SCREEN BUTTON --------------------------
 startButton.addEventListener("click", ()=>{
     console.log(gameContainer.offsetWidth)
-    // gameContainer.scrollBy(gameContainer.offsetWidth,0)
     gameContainer.scrollBy(document.querySelector(".start-screen").offsetWidth,0)
 })
 
@@ -146,8 +140,6 @@ guessButtons.forEach(guess => {
     guess.addEventListener("click", (e)=>{
 
         playerGuess(e)
-        // let guessedLetter = e.target.innerText
-        // console.log(guessedLetter)
     })
 
 })
@@ -167,11 +159,3 @@ modalClose.addEventListener("click", ()=>{
 replay.addEventListener("click", ()=>{
     location.reload(true)
 })
-
-// ----------- KEYBOARD INPUT --------------------------
-
-// document.querySelector(".question-screen").addEventListener("keyup", (e)=>{
-
-//     playerGuess()
-
-// })

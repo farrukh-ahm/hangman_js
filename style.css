@@ -93,8 +93,8 @@ body{
 
 .image-container{
 
-    block-size: 10rem;
-    inline-size: 8rem;
+    block-size: 16rem;
+    inline-size: 12rem;
     display: grid;
     place-items: center;
     /* background-color: aqua; */
@@ -202,9 +202,9 @@ img{
         background-color: var(--bg-color-1);
 
         .lost-image{
-            inline-size: 7em;
+            inline-size: 12em;
             /* aspect-ratio: 11em; */
-            block-size: 11em;
+            block-size: 8em;
         }
 
     }
@@ -212,8 +212,8 @@ img{
 
 @media (min-width: 500px){
     .image-container{
-        block-size: 20rem;
-        inline-size: 15rem;
+        block-size: 25rem;
+        inline-size: 18.5rem;
     }
 
     .game-container{
@@ -240,8 +240,8 @@ img{
             gap: 1.5em;
     
             .lost-image{
-                inline-size: 9em;
-                block-size: 13em;
+                inline-size: 12em;
+                block-size: 10em;
             }
     
         }
