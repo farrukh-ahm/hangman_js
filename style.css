@@ -26,7 +26,7 @@
 }
 
 body{
-    block-size: 100dvh;
+    block-size: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -162,8 +162,8 @@ img{
         background-color: var(--bg-color-1);
         backdrop-filter: blur(5px);
 
-        h2{
-            font-size: 2.5rem;
+        p{
+            font-size: 1.8rem;
             padding-block: 1em;
         }
 

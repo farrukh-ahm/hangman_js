@@ -20,10 +20,10 @@ let score = 0
 // ----------- INITIALISE THE GAME SCREEN --------------------------
 const gameSetup = category => {
 
-    cat = category. toLowerCase()
+    cat = category.toLowerCase()
 
     let randomWord = words[cat][Math.floor(Math.random() * words[cat].length)].toLowerCase()
-
+    console.log(randomWord)
     randomWordList = randomWord.split("")
 
     for(let i of randomWord){
@@ -37,7 +37,7 @@ const gameSetup = category => {
     }
 
     wordGuess.innerText = `${selectedWords.join(" ")}`
-    hangmanFigure.src = `./assets/${hangmanStage[turns]}`
+    hangmanFigure.src = `./assets/${hangmanStage[0]}`
     gameContainer.scrollBy(document.querySelector(".selection-screen").offsetWidth, 0)
 
 }
@@ -70,6 +70,8 @@ const nextQuestion = () => {
     }
 
     wordGuess.innerText = `${selectedWords.join(" ")}`
+    hangmanFigure.src = `./assets/${hangmanStage[0]}`
+    turns = 0
 
 }
 
@@ -93,6 +95,7 @@ const playerGuess = e => {
             score ++
             document.querySelector(".score-display").innerText = `Your Score: ${score}`;
             document.querySelector(".score-collector").innerText = parseInt(document.querySelector(".score-collector").innerText)+1
+            document.querySelector(".c-answer").innerText = `${randomWordList.join("").toUpperCase()}`
             modal.showModal();
         }
     }
@@ -103,6 +106,7 @@ const playerGuess = e => {
 
         if(turns === 6){
             document.querySelector(".total-score").innerText = `Your Score: ${score}`
+            document.querySelector(".correct-answer").insertAdjacentHTML("beforeend", `<span>${randomWordList.join("").toUpperCase()}</span>`)
             gameContainer.scrollBy(document.querySelector(".question-screen").offsetWidth, 0)
             hangmanFigure.src = `./assets/over.png`
             return
